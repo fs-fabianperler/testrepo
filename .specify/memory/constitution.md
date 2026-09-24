@@ -1,13 +1,15 @@
 <!--
 Sync Impact Report
-- Version change: (template) → 1.0.0
-- Modified principles: none (initial adoption)
-- Added principles:
-  - I. Simplicity (YAGNI)
-  - II. Security by Default
-  - III. Clean Architecture
-- Template principles 4 and 5 intentionally omitted (project adopts three principles)
-- Added sections: Technology Constraints, Development Workflow & Quality Gates, Governance
+- Version change: 1.0.0 → 1.1.0 (MINOR: workflow gate relaxed; everything that complied with
+  1.0.0 still complies, so this is not backward-incompatible)
+- Modified principles:
+  - I. Simplicity (YAGNI): complexity justification moved from plan.md Complexity Tracking
+    to the chat plan and the PR description
+- Modified sections:
+  - Development Workflow & Quality Gates: default flow is now specify → (clarify) → plan in
+    Copilot chat → implement with Copilot; plan.md/tasks.md are optional
+  - Governance: compliance check moved from /speckit-plan to chat plan review and PR review
+- Added sections: none
 - Removed sections: none
 - Follow-up TODOs: none
 -->
@@ -23,8 +25,8 @@ testproject demonstrates how spec-driven development can work for our team.
 - Implementations MUST solve only the requirements stated in the current spec; speculative
   features, options, and extension points MUST NOT be added.
 - The simplest design that satisfies the spec MUST be chosen; any added complexity (new
-  dependency, abstraction layer, pattern, or service) MUST be justified in the plan's
-  Complexity Tracking section.
+  dependency, abstraction layer, pattern, or service) MUST be justified in the plan and in
+  the pull request description.
 - New runtime dependencies MUST be justified by a concrete need that the standard library or
   existing dependencies cannot reasonably meet.
 - Dead code, unused exports, and commented-out code MUST be removed before merge.
@@ -71,7 +73,17 @@ needs them).
 
 ## Development Workflow & Quality Gates
 
-- Every feature MUST follow the Spec Kit flow: specify → (clarify) → plan → tasks → implement.
+- Every feature MUST start with a spec in `specs/` created by `/speckit-specify`; clarifying
+  with `/speckit-clarify` is optional.
+- The implementation plan MUST be drafted and reviewed with Copilot in chat against the spec
+  and this constitution, and the developer MUST approve it before implementation starts.
+  The plan MUST cover the Constitution Check and any justification for added complexity.
+- Implementation MUST be done with Copilot based on the approved plan, and the spec's
+  acceptance scenarios MUST be verified before the pull request is opened.
+- The pull request description MUST link the spec and summarize the approved plan, including
+  any justification for added complexity, so reviewers can trace the decisions.
+- Writing plan.md/tasks.md with `/speckit-plan` and `/speckit-tasks` is OPTIONAL; use it when
+  a feature is too large to plan reliably in a single chat session.
 - All changes MUST be merged via pull request with at least one approving review.
 - CI MUST pass before merge: lint, type-check, automated tests, and build.
 - Reviewers MUST verify compliance with this constitution, including justification of any
@@ -86,6 +98,7 @@ needs them).
   - MAJOR: removal or backward-incompatible redefinition of a principle or governance rule.
   - MINOR: new principle or section, or materially expanded guidance.
   - PATCH: clarifications and wording fixes with no semantic change.
-- Compliance is checked during `/speckit-plan` (Constitution Check) and in every PR review.
+- Compliance is checked during the chat plan review (Constitution Check) and in every PR
+  review.
 
-**Version**: 1.0.0 | **Ratified**: 2026-09-24 | **Last Amended**: 2026-09-24
+**Version**: 1.1.0 | **Ratified**: 2026-09-24 | **Last Amended**: 2026-09-24
