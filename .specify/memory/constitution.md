@@ -74,7 +74,8 @@ without the ceremony of full layering before it pays off (Principle I).
 ## Development Workflow & Quality Gates
 
 - Every feature MUST start from a business requirement in a Jira ticket.
-- Work MUST happen on a feature branch named after the ticket key (e.g., `PROJ-123-short-name`).
+- Work MUST happen on a branch named `feature/<ticket-key>-short-name` or
+  `bug/<ticket-key>-short-name` (e.g., `feature/FIN-123-short-name`).
 - The spec MUST be created in `specs/` with `/speckit-specify` from the ticket content; the
   developer MAY review and edit the spec before planning.
 - The implementation plan MUST be drafted and reviewed with Copilot in chat against the spec

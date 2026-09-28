@@ -4,6 +4,8 @@
 - The React app lives in `app/` (Vite, TypeScript strict, Oxlint, Prettier, Vitest). Run npm commands from `app/`.
 - Every change implements a spec in `specs/NNN-feature/spec.md`. Do not add behavior the spec does not ask for.
 - After implementing a spec and verifying its acceptance scenarios, change its `**Status**:` line from `Draft` to `Implemented` in the same change.
+- Then output a pull request description in chat, following `.github/pull_request_template.md`, filled from the Jira ticket, the spec and the approved plan.
+- Never commit, push or open a pull request on your own; the developer commits and pushes. Open the pull request only when the developer explicitly asks, using that description.
 
 ## Code review
 

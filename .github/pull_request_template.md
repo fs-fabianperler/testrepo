@@ -1,6 +1,7 @@
 ## Ticket
 
-Jira: <!-- e.g. PROJ-123 -->
+<!-- replace FIN-123 with the ticket key in both places -->
+Jira: [FIN-123](https://jira.hbl.linkyard-cloud.ch/browse/FIN-123)
 
 ## Spec
 
