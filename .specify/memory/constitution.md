@@ -1,14 +1,14 @@
 <!--
 Sync Impact Report
-- Version change: 1.0.0 → 1.1.0 (MINOR: workflow gate relaxed; everything that complied with
-  1.0.0 still complies, so this is not backward-incompatible)
+- Version change: 1.1.0 → 1.2.0 (MINOR: principle relaxed and workflow guidance expanded;
+  everything that complied with 1.1.0 still complies)
 - Modified principles:
-  - I. Simplicity (YAGNI): complexity justification moved from plan.md Complexity Tracking
-    to the chat plan and the PR description
+  - III. Clean Architecture: strict domain/application/adapter layering replaced by
+    separating business rules from UI and I/O; further layers only when a feature needs them
 - Modified sections:
-  - Development Workflow & Quality Gates: default flow is now specify → (clarify) → plan in
-    Copilot chat → implement with Copilot; plan.md/tasks.md are optional
-  - Governance: compliance check moved from /speckit-plan to chat plan review and PR review
+  - Development Workflow & Quality Gates: features start from a Jira ticket; branch named
+    after the ticket key; /speckit-clarify removed; spec and implementation in one PR;
+    PR links the ticket; CI also runs the dependency audit
 - Added sections: none
 - Removed sections: none
 - Follow-up TODOs: none
@@ -51,17 +51,16 @@ adopting this workflow.
 
 ### III. Clean Architecture
 
-- Code MUST be organized into layers with dependencies pointing inward only:
-  domain (entities, business rules) → application (use cases) → adapters/infrastructure
-  (HTTP, persistence, external services, UI).
-- Domain and application layers MUST NOT import frameworks, I/O, or infrastructure modules;
-  they depend on interfaces (ports) that outer layers implement.
-- Each module MUST have a single, clear responsibility; cross-layer shortcuts are prohibited.
-- Business rules MUST be testable without network, database, or filesystem access.
+- Business rules MUST live in plain TypeScript modules, separate from UI components and I/O.
+- Business-rule modules MUST NOT import UI frameworks, I/O, or infrastructure code;
+  dependencies point from UI and infrastructure to business rules, never the reverse.
+- Business rules MUST be testable without rendering UI and without network, database, or
+  filesystem access.
+- Each module MUST have a single, clear responsibility.
+- Further layers (use cases, ports/adapters) MUST be added only when a feature needs them.
 
-**Rationale**: Clear boundaries keep the codebase understandable, testable, and replaceable at
-the edges, while staying consistent with Principle I (layers are added only when a feature
-needs them).
+**Rationale**: Keeping business rules apart from the UI keeps them easy to test and change,
+without the ceremony of full layering before it pays off (Principle I).
 
 ## Technology Constraints
 
@@ -73,19 +72,25 @@ needs them).
 
 ## Development Workflow & Quality Gates
 
-- Every feature MUST start with a spec in `specs/` created by `/speckit-specify`; clarifying
-  with `/speckit-clarify` is optional.
+- Every feature MUST start from a business requirement in a Jira ticket.
+- Work MUST happen on a feature branch named after the ticket key (e.g., `PROJ-123-short-name`).
+- The spec MUST be created in `specs/` with `/speckit-specify` from the ticket content; the
+  developer MAY review and edit the spec before planning.
 - The implementation plan MUST be drafted and reviewed with Copilot in chat against the spec
   and this constitution, and the developer MUST approve it before implementation starts.
   The plan MUST cover the Constitution Check and any justification for added complexity.
 - Implementation MUST be done with Copilot based on the approved plan, and the spec's
   acceptance scenarios MUST be verified before the pull request is opened.
-- The pull request description MUST link the spec and summarize the approved plan, including
-  any justification for added complexity, so reviewers can trace the decisions.
+- The spec and its implementation MUST be delivered in the same pull request.
+- The pull request description MUST link the Jira ticket and the spec and summarize the
+  approved plan, including any justification for added complexity, so reviewers can trace
+  the decisions.
 - Writing plan.md/tasks.md with `/speckit-plan` and `/speckit-tasks` is OPTIONAL; use it when
   a feature is too large to plan reliably in a single chat session.
-- All changes MUST be merged via pull request with at least one approving review.
-- CI MUST pass before merge: lint, type-check, automated tests, and build.
+- All changes MUST be merged via pull request with an automated Copilot code review and at
+  least one approving review by a developer.
+- CI MUST pass before merge: lint, format check, type-check, automated tests, build, and
+  dependency audit.
 - Reviewers MUST verify compliance with this constitution, including justification of any
   added complexity.
 
@@ -101,4 +106,4 @@ needs them).
 - Compliance is checked during the chat plan review (Constitution Check) and in every PR
   review.
 
-**Version**: 1.1.0 | **Ratified**: 2026-09-24 | **Last Amended**: 2026-09-24
+**Version**: 1.2.0 | **Ratified**: 2026-09-24 | **Last Amended**: 2026-09-28
