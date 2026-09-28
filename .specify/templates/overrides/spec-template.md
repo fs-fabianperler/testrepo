@@ -2,6 +2,8 @@
 
 **Feature Branch**: `[###-feature-name]`
 
+**Jira**: [FIN-123](https://jira.hbl.linkyard-cloud.ch/browse/FIN-123)
+
 **Created**: [DATE]
 
 **Status**: Draft

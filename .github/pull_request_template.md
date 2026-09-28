@@ -5,7 +5,7 @@ Jira: [FIN-123](https://jira.hbl.linkyard-cloud.ch/browse/FIN-123)
 
 ## Spec
 
-<!-- link to specs/NNN-feature/spec.md -->
+<!-- link to specs/FIN-123-feature/spec.md -->
 
 ## Approved plan (summary)
 

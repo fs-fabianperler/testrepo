@@ -11,7 +11,7 @@ Every change goes from a Jira ticket to a spec, then to a plan and code made wit
 ```mermaid
 flowchart LR
   J["Jira ticket<br/>business requirement"] -->|"key + text"| B["Branch<br/>feature/FIN-123-name<br/>or bug/FIN-123-name"]
-  B --> S["/speckit-specify<br/>specs/FIN-123/spec.md"]
+  B --> S["/speckit-specify<br/>specs/FIN-123-feature/spec.md"]
   S -.->|optional| R["Spec review<br/>developer edits spec"]
   S --> P["Plan in chat<br/>Plan mode + Constitution Check<br/>developer approves"]
   R -.-> P

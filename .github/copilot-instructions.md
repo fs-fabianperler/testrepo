@@ -2,7 +2,7 @@
 
 - The project constitution in `.specify/memory/constitution.md` is binding. Follow it when planning and implementing, and check compliance when reviewing.
 - The React app lives in `app/` (Vite, TypeScript strict, Oxlint, Prettier, Vitest). Run npm commands from `app/`.
-- Every change implements a spec in `specs/NNN-feature/spec.md`. Do not add behavior the spec does not ask for.
+- Every change implements a spec in `specs/FIN-123-feature/spec.md`. Do not add behavior the spec does not ask for.
 - Update the docs listed in the spec's `Documentation Impact` section in the same change: every configuration option the app reads goes into `docs/technical/configuration.md`, every user-facing feature and flow into `docs/product/` (plain language for external readers, flows as Mermaid diagrams, no internal details).
 - After implementing a spec and verifying its acceptance scenarios, change its `**Status**:` line from `Draft` to `Implemented` in the same change.
 - Then output a pull request description in chat, following `.github/pull_request_template.md`, filled from the Jira ticket, the spec and the approved plan.
