@@ -11,7 +11,7 @@ Every change goes from a Jira ticket to a spec, then to a plan and code made wit
 ```mermaid
 flowchart LR
   J["Jira ticket<br/>business requirement"] -->|"key + text"| B["Branch<br/>feature/FIN-123-name<br/>or bug/FIN-123-name"]
-  B --> S["/speckit-specify<br/>specs/NNN/spec.md"]
+  B --> S["/speckit-specify<br/>specs/FIN-123/spec.md"]
   S -.->|optional| R["Spec review<br/>developer edits spec"]
   S --> P["Plan in chat<br/>Plan mode + Constitution Check<br/>developer approves"]
   R -.-> P
@@ -27,7 +27,7 @@ flowchart LR
 
 1. **Jira ticket**: The business requirement and its acceptance criteria are written in Jira.
 2. **Branch**: Create a branch named after the ticket type and key: `feature/FIN-123-short-name` or `bug/FIN-123-short-name`.
-3. **Spec**: In Copilot chat, run `/speckit-specify` with the ticket key and text. Copilot writes `specs/NNN-feature/spec.md` with user stories, acceptance scenarios and requirements, but no technical design.
+3. **Spec**: In Copilot chat, run `/speckit-specify` with the ticket key and text. Copilot writes `specs/FIN-123-feature/spec.md` with user stories, acceptance scenarios and requirements, but no technical design.
 4. **Spec review (optional)**: The developer reads the spec and edits it if needed.
 5. **Plan**: In Plan mode, ask Copilot for an implementation plan based on the spec. The plan includes a check against the constitution and justifies any new dependency or abstraction. The developer approves the plan before any code is written.
 6. **Implement**: Switch to Agent mode and let Copilot implement the approved plan with tests. Copilot verifies the acceptance scenarios, sets the spec's `**Status**:` to `Implemented`, and drafts the PR description from the [template](.github/pull_request_template.md): Jira key, spec link, plan summary and any added complexity.
