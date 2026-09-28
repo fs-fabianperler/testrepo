@@ -15,8 +15,13 @@ Jira: [FIN-123](https://jira.hbl.linkyard-cloud.ch/browse/FIN-123)
 
 <!-- new dependencies, abstractions or patterns and why; "none" if none -->
 
+## Documentation
+
+<!-- changed files in docs/technical/ and docs/product/; "none" if none -->
+
 ## Checklist
 
 - [ ] Spec acceptance scenarios verified
 - [ ] Spec status set to `Implemented`
+- [ ] Docs updated per the spec's Documentation Impact
 - [ ] Lint, type-check, tests and build pass locally
