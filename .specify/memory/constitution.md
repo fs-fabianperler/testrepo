@@ -8,7 +8,8 @@ Sync Impact Report
 - Modified sections:
   - Development Workflow & Quality Gates: features start from a Jira ticket; branch named
     after the ticket key; /speckit-clarify removed; spec and implementation in one PR;
-    PR links the ticket; CI also runs the dependency audit
+    PR links the ticket; CI also runs the dependency audit; optional plan.md/tasks.md
+    via /speckit-plan and /speckit-tasks removed (skills no longer installed)
 - Added sections: none
 - Removed sections: none
 - Follow-up TODOs: none
@@ -85,8 +86,6 @@ without the ceremony of full layering before it pays off (Principle I).
 - The pull request description MUST link the Jira ticket and the spec and summarize the
   approved plan, including any justification for added complexity, so reviewers can trace
   the decisions.
-- Writing plan.md/tasks.md with `/speckit-plan` and `/speckit-tasks` is OPTIONAL; use it when
-  a feature is too large to plan reliably in a single chat session.
 - All changes MUST be merged via pull request with an automated Copilot code review and at
   least one approving review by a developer.
 - CI MUST pass before merge: lint, format check, type-check, automated tests, build, and
