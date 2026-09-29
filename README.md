@@ -2,7 +2,7 @@
 
 A React web application created from the official [Vite](https://vite.dev/) `react-ts` template, used to show spec-driven development with Spec Kit.
 
-Spec: [specs/001-react-app-template/spec.md](specs/001-react-app-template/spec.md)
+![Spec-driven development: the spec, not the code, is the source of truth](docs/images/sdd.png)
 
 ## Development workflow
 
