@@ -4,7 +4,11 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
 
-function App() {
+type AppProps = {
+  showResetButton: boolean
+}
+
+function App({ showResetButton }: AppProps) {
   const [count, setCount] = useState(0)
 
   return (
@@ -21,13 +25,24 @@ function App() {
             Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
           </p>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
+        <div className="counter-actions">
+          <button
+            type="button"
+            className="counter"
+            onClick={() => setCount((count) => count + 1)}
+          >
+            Count is {count}
+          </button>
+          {showResetButton && (
+            <button
+              type="button"
+              className="counter"
+              onClick={() => setCount(0)}
+            >
+              Reset
+            </button>
+          )}
+        </div>
       </section>
 
       <div className="ticks"></div>

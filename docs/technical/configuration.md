@@ -13,5 +13,9 @@ This page lists every option the app reads at runtime or build time. CI runs [ap
 
 | Name | Where read | Type | Default | Required | Description |
 | ---- | ---------- | ---- | ------- | -------- | ----------- |
+| `VITE_RESET_COUNTER_ENABLED` | `app/src/main.tsx` | String; only `true` turns it on | Unset (off) | No | Shows the Reset button next to the counter on the start screen. Any other value, or no value, hides it. |
 
-The app reads no configuration options yet.
+## Setting options
+
+- Set `VITE_*` options in `app/.env.local` (not committed) or in the shell before running `npm run dev` or `npm run build`, e.g. `$env:VITE_RESET_COUNTER_ENABLED='true'`.
+- Vite builds the values into the bundle, so a changed value takes effect only after a new build and deployment.
