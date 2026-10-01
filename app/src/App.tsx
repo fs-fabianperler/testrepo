@@ -4,7 +4,11 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
 
-function App() {
+type AppProps = {
+  showResetButton: boolean
+}
+
+function App({ showResetButton }: AppProps) {
   const [count, setCount] = useState(0)
 
   return (
@@ -28,6 +32,16 @@ function App() {
         >
           Count is {count}
         </button>
+        {showResetButton && (
+          <button
+            type="button"
+            className="counter"
+            aria-label="Reset counter"
+            onClick={() => setCount(0)}
+          >
+            Reset
+          </button>
+        )}
       </section>
 
       <div className="ticks"></div>
