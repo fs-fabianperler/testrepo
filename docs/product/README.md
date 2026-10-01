@@ -4,7 +4,7 @@ Documentation for people who use testproject.
 
 ## Features
 
-No user-facing features yet.
+- [Reset the counter](reset-counter.md)
 
 ## Writing feature pages
 

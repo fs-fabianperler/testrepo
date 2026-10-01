@@ -24,6 +24,12 @@ function optionsInCode(): string[] {
       names.add(match[1] ?? match[2])
     }
   }
+  const runtimeConfig: Record<string, unknown> = JSON.parse(
+    readFileSync(`${appDir}public/config.json`, 'utf8'),
+  )
+  for (const name of Object.keys(runtimeConfig)) {
+    names.add(name)
+  }
   return [...names].sort()
 }
 
