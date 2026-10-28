@@ -4,7 +4,7 @@ Documentation for people who use testproject.
 
 ## Features
 
-No user-facing features yet.
+- [Counter](counter.md): count on the start screen and reset the count to zero.
 
 ## Writing feature pages
 
